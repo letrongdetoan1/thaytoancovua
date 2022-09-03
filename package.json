@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/letrongdetoan1/thaytoancovua#readme",
   "dependencies": {
+    "chess.js": "^0.13.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",

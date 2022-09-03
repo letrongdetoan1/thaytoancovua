@@ -12,7 +12,7 @@ const { startup } = require('./startup');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use('/publics',(express.static(path.join(__dirname,'./publics'))))
+app.use('/',(express.static(path.join(__dirname,'./publics'))))
 app.use('/views',(express.static(path.join(__dirname,'./views'))))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
