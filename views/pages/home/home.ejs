@@ -7,139 +7,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/img/logo.png">
     <title>Học Cờ Vua Cùng Thầy Toàn</title>
-    <link rel="stylesheet" href="/css/chessboard-1.0.0.min.css">
-    <link rel="stylesheet" href="/css/chess-color.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/before.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/base.client.css">
+    <link rel="stylesheet" href="/css/core.client.css">
+    <link rel="stylesheet" href="/bundles/app/css/index.client.ff8ff8eb.css">
+    <link rel="stylesheet" href="/bundles/app/css/layout.client.6858559a.css">
+    <link rel="stylesheet" href="/bundles/app/css/navigation-footer.client.5547c49b.css">
+    <link rel="stylesheet" href="/bundles/app/css/navigation.client.69b863d4.css">
+    <link rel="stylesheet" href="/bundles/app/css/sprites.client.2f051ee5.css">
 </head>
 
 <body>
-    <div class="base-layout">
-        <div class="base-sidebar">
-            <div class="nav-top">
-                <ul>
-                    <li class="sprite learn-top"><a href="">Trang chủ</a></li>
-                    <li class="sprite play-top "><a href="">Thi đấu</a></li>
-                    <li class="sprite puzzles-top "><a href="">Bài tập</a></li>
-                </ul>
-            </div>
-            <div class="nav-bottom">
-                <ul>
-                    <li><a href="">Đăng ký</a></li>
-                    <li><a href="">Đăng nhập</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="base-container">
-            <div class="layout-component">
-                <div class="index-component">
-                    <section class="index-guest-block">
-                        <div class="index-board">
-                            <div id="board-layout-main">
-                                <div id="board-layout-player-top">
-                                    <div class="player-component player-top">
-                                        <div class="player-avatar">
-                                            <img data-cy="avatar" alt="hoccovua17"
-                                                src="https://www.chess.com/bundles/web/images/user-image.svg"
-                                                srcset="https://www.chess.com/bundles/web/images/user-image.svg, https://www.chess.com/bundles/web/images/user-image.svg 2x"
-                                                width="40" height="40" class="avatar-component player-image">
-                                        </div>
-                                        <div class="player-tagline">
-                                            <div class="user-tagline-component">
-                                                <a class="user-username-component user-username-dark user-username-link user-tagline-username"
-                                                    data-test-element="user-tagline-username">hoccovua17</a>
-                                                <span class="user-tagline-rating user-tagline-dark"></span>
-                                                <div class="country-flags-component country-br"></div>
-                                            </div>
-                                        </div>
-                                        <div class="clock-component clock-black clock-top clock-live player-clock">
-                                            <div class="clock-icon">
-                                                <div class="clock-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="20" height="20" viewBox="0 0 20 20" class="clock-timer"
-                                                        style="transform: rotate(54000deg);">
-                                                        <path
-                                                            d="M5.48,9a.93.93,0,0,0-.3.71v.58a.94.94,0,0,0,.3.71,1,1,0,0,0,.71.3h4.58a1,1,0,0,0,.71-.3.94.94,0,0,0,.29-.71V9.7A.92.92,0,0,0,11.48,9a1,1,0,0,0-.71-.27H6.19A1,1,0,0,0,5.48,9Z">
-                                                        </path>
-                                                        <path
-                                                            d="M19.22,6.1a9.9,9.9,0,0,0-2.14-3.18A10.23,10.23,0,0,0,13.9.78,9.76,9.76,0,0,0,10,0,9.86,9.86,0,0,0,6.1.78,10,10,0,0,0,.78,6.1,9.81,9.81,0,0,0,0,10a9.81,9.81,0,0,0,.78,3.9A10,10,0,0,0,6.1,19.22,9.86,9.86,0,0,0,10,20a9.76,9.76,0,0,0,3.89-.78,10.23,10.23,0,0,0,3.18-2.14,9.9,9.9,0,0,0,2.14-3.18A9.81,9.81,0,0,0,20,10,9.81,9.81,0,0,0,19.22,6.1ZM17.07,13a7.65,7.65,0,0,1-1.65,2.42A7.81,7.81,0,0,1,13,17.06a7.46,7.46,0,0,1-3,.6,7.51,7.51,0,0,1-3-.6,7.74,7.74,0,0,1-2.43-1.65A8,8,0,0,1,2.94,13a7.46,7.46,0,0,1-.6-3,7.46,7.46,0,0,1,.6-3A8,8,0,0,1,4.58,4.59,7.74,7.74,0,0,1,7,2.94a7.51,7.51,0,0,1,3-.6,7.45,7.45,0,0,1,3,.6,7.74,7.74,0,0,1,2.43,1.65A7.65,7.65,0,0,1,17.07,7a7.46,7.46,0,0,1,.6,3A7.46,7.46,0,0,1,17.07,13Z">
-                                                        </path>
-                                                    </svg>
-                                                    <span data-cy="clock-time">0:00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="board-layout-chessboard">
-                                    <div id="myBoard" style="width: 100%"></div>
-                                </div>
-                                <div id="board-layout-player-bottom">
-                                    <div class="player-component player-bottom">
-                                        <div class="player-avatar">
-                                            <img data-cy="avatar" alt="hoccovua17"
-                                                src="https://www.chess.com/bundles/web/images/user-image.svg"
-                                                srcset="https://www.chess.com/bundles/web/images/user-image.svg, https://www.chess.com/bundles/web/images/user-image.svg 2x"
-                                                width="40" height="40" class="avatar-component player-image">
-                                        </div>
-                                        <div class="player-tagline">
-                                            <div class="user-tagline-component">
-                                                <a class="user-username-component user-username-dark user-username-link user-tagline-username"
-                                                    data-test-element="user-tagline-username">hoccovua17</a>
-                                                <span class="user-tagline-rating user-tagline-dark"></span>
-                                                <div class="country-flags-component country-br"></div>
-                                            </div>
-                                        </div>
-                                        <div class="clock-component clock-black clock-top clock-live player-clock">
-                                            <div class="clock-icon">
-                                                <div class="clock-icon"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="20" height="20" viewBox="0 0 20 20" class="clock-timer"
-                                                        style="transform: rotate(54000deg);">
-                                                        <path
-                                                            d="M5.48,9a.93.93,0,0,0-.3.71v.58a.94.94,0,0,0,.3.71,1,1,0,0,0,.71.3h4.58a1,1,0,0,0,.71-.3.94.94,0,0,0,.29-.71V9.7A.92.92,0,0,0,11.48,9a1,1,0,0,0-.71-.27H6.19A1,1,0,0,0,5.48,9Z">
-                                                        </path>
-                                                        <path
-                                                            d="M19.22,6.1a9.9,9.9,0,0,0-2.14-3.18A10.23,10.23,0,0,0,13.9.78,9.76,9.76,0,0,0,10,0,9.86,9.86,0,0,0,6.1.78,10,10,0,0,0,.78,6.1,9.81,9.81,0,0,0,0,10a9.81,9.81,0,0,0,.78,3.9A10,10,0,0,0,6.1,19.22,9.86,9.86,0,0,0,10,20a9.76,9.76,0,0,0,3.89-.78,10.23,10.23,0,0,0,3.18-2.14,9.9,9.9,0,0,0,2.14-3.18A9.81,9.81,0,0,0,20,10,9.81,9.81,0,0,0,19.22,6.1ZM17.07,13a7.65,7.65,0,0,1-1.65,2.42A7.81,7.81,0,0,1,13,17.06a7.46,7.46,0,0,1-3,.6,7.51,7.51,0,0,1-3-.6,7.74,7.74,0,0,1-2.43-1.65A8,8,0,0,1,2.94,13a7.46,7.46,0,0,1-.6-3,7.46,7.46,0,0,1,.6-3A8,8,0,0,1,4.58,4.59,7.74,7.74,0,0,1,7,2.94a7.51,7.51,0,0,1,3-.6,7.45,7.45,0,0,1,3,.6,7.74,7.74,0,0,1,2.43,1.65A7.65,7.65,0,0,1,17.07,7a7.46,7.46,0,0,1,.6,3A7.46,7.46,0,0,1,17.07,13Z">
-                                                        </path>
-                                                    </svg>
-                                                    <span data-cy="clock-time">0:00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="index-intro">
-                            <h1>Chào mừng bạn đến trang web học cờ vua!</h1>
-                            <label class="label-chess">Đến lượt:</label>
-                            <div class="label-chess" id="status"></div>
-                            <!-- <label>FEN:</label>
-                            <div id="fen"></div> -->
-                            <label class="label-chess">Biên bản thi đấu</label>
-                            <div class="label-chess" id="pgn"></div>
-                        </div>
-                    </section>
-                </div>
-                <div class="index-component">
-                    <section class="index-guest-block">
-                        <div class="index-board">
 
+    <body class="newicons dark-mode scrollbar-obtrusive">
+        <div class="base-layout">
+            <div class="base-sidebar">
+                <div id="sb" style="" class="nav-component guest wide" data-constant-message-unread-count-max="100"
+                    data-notifications-limit="200" data-route-login-and-go="/login_and_go"
+                    data-route-register="/register">
+                    <div id="sb-cover" data-mobile-nav-toggle=""></div>
+                    <div class="nav-action toggle close" data-mobile-nav-toggle="">
+                        <span class="icon-font-chess x"></span>
+                    </div>
+                    <div data-nav-top="">
+                        <a class="nav-link-component nav-link-main-design chess-logo-wrapper sprite learn-top no-panel nav-link-top-level"
+                            data-nav-link="home" data-amplitude-nav-selection="home" href="/" target="_self">
+                            <span class="nav-link-text">Trang chủ</span>
+                            <!---->
+                        </a>
+                        <a class="nav-link-component nav-link-main-design nav-link-top-level sprite play-top"
+                            data-amplitude-nav-selection="play" data-nav-link="play" href="/play" target="_self">
+                            <span class="nav-link-text">Thi đấu</span>
+                            <!---->
+                        </a>
+                        <div class="nav-panel-component" data-nav-panel="play"
+                            data-routes="{&quot;leaderboard&quot;:&quot;https:\/\/www.chess.com\/vi\/leaderboard&quot;,&quot;live&quot;:&quot;https:\/\/www.chess.com\/vi\/live&quot;,&quot;daily&quot;:&quot;https:\/\/www.chess.com\/vi\/play\/online\/daily&quot;,&quot;computer&quot;:&quot;https:\/\/www.chess.com\/vi\/play\/computer&quot;,&quot;playOnline&quot;:&quot;https:\/\/www.chess.com\/vi\/play\/online&quot;,&quot;playPage&quot;:&quot;https:\/\/www.chess.com\/vi\/play&quot;,&quot;playFriend&quot;:&quot;https:\/\/www.chess.com\/vi\/play\/online\/friend&quot;,&quot;puzzleBattle&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/battle&quot;,&quot;puzzles&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/rush&quot;,&quot;tournamentsPlay&quot;:&quot;https:\/\/www.chess.com\/vi\/play\/online\/tournaments&quot;,&quot;tournaments&quot;:&quot;https:\/\/www.chess.com\/vi\/tournaments&quot;,&quot;library&quot;:&quot;https:\/\/www.chess.com\/vi\/library&quot;,&quot;gameArchive&quot;:&quot;https:\/\/www.chess.com\/vi\/games\/archive&quot;,&quot;variants&quot;:&quot;https:\/\/www.chess.com\/vi\/variants&quot;}">
                         </div>
-                        <div class="index-intro">
+                        <a class="nav-link-component nav-link-main-design nav-link-top-level sprite puzzles-top"
+                            data-amplitude-nav-selection="puzzles" data-nav-link="puzzles" href="/puzzles"
+                            target="_self">
+                            <span class="nav-link-text">Học tập</span>
+                        </a>
+                        <div class="nav-panel-component" data-nav-panel="puzzles"
+                            data-routes="{&quot;dailyPuzzle&quot;:&quot;https:\/\/www.chess.com\/vi\/daily-chess-puzzle&quot;,&quot;drills&quot;:&quot;https:\/\/www.chess.com\/vi\/drills&quot;,&quot;endgames&quot;:&quot;https:\/\/www.chess.com\/vi\/endgames&quot;,&quot;practice&quot;:&quot;https:\/\/www.chess.com\/vi\/practice&quot;,&quot;puzzleBattle&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/battle&quot;,&quot;puzzlesCustom&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/learning&quot;,&quot;puzzlesRush&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/rush&quot;,&quot;puzzlesRated&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/rated&quot;,&quot;tactics&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles&quot;,&quot;soloChess&quot;:&quot;https:\/\/www.chess.com\/vi\/solo-chess&quot;}">
+                        </div>
 
-                        </div>
-                    </section>
+                        <a id="menu-cta" data-amplitude-props="{&quot;source&quot;:&quot;Unknown&quot;}"
+                            href="/register" target="_self"
+                            rel="nofollow"
+                            class="button auth signup register ui_v5-button-component ui_v5-button-basic-dark ">
+                            <span class="icon-font-chess icon user-plus"></span>
+
+                            <span class="label">Đăng ký</span>
+                        </a>
+
+                        <a href="/login"
+                            target="_self" rel="nofollow"
+                            class="button auth login ui_v5-button-component ui_v5-button-primary ">
+                            <span class="icon-font-chess icon enter"></span>
+                            <span class="label">Đăng nhập</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="base-container">
+                <div id="scroll-top-anchor"></div>
+                <div id="language-banner"></div>
+                <header id="tb" class="toolbar-new-wrapper ">
+                    <div class="toolbar-menu-area toolbar-menu-area-left">
+                        <div class="toolbar-action toggle open" data-mobile-nav-toggle="">
+                            <span class="icon-font-chess menu toolbar-action-icon"></span>
+                        </div>
+                        <a href="/" class="link chess-logo-wrapper sprite chess-logo"
+                            aria-label="Chess.com - Chơi cờ vua trực tuyến">
+                        </a>
+                    </div>
+                    <div class="toolbar-menu-area toolbar-mobile-auth-actions  ">
+                        <a class="toolbar-mobile-auth-action ui_v5-button-component ui_v5-button-basic-dark ui_v5-button-x-small sign-up"
+                            href="/register" rel="nofollow"
+                            title="Đăng ký">
+                            Đăng ký
+                        </a>
+                        <a class="toolbar-mobile-auth-action ui_v5-button-component ui_v5-button-primary ui_v5-button-x-small login"
+                            href="/login"
+                            rel="nofollow" title="Đăng nhập">
+                            Đăng nhập
+                        </a>
+                    </div>
+                </header>
+                <main class="layout-component layout-single">
+                    <div class="layout-column-wide">
+                        <div class="index-component">
+                            <section class="index-guest-block">
+                                <div class="index-board">
+                                    <form action="/"
+                                        class="index-guest-button-form" method="post">
+                                        <input type="hidden" name="_token"
+                                            value="2UE5y4nZPTGjLkgDmFBD5i4DDI0aHO5MsCh0ydCC2DU">
 
-    <script src="/js/jquery351min.js"></script>
-    <script src="/js/chessboard.js"></script>
-    <script src="/js/chess12.1.js"></script>
-    <script src="/js/check-chess.js"></script>
-    <!-- <script src="/js/home.js"></script> -->
+                                        <button aria-label="Chơi trực tuyến" type="submit"
+                                            class="index-guest-board-link">
+                                            <img alt="Bàn cờ" class="index-board-img" width="496" height="496"
+                                                src="/bundles/web/images/offline-play/standardboard.1d6f9426.png">
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="index-intro">
+                                    <h1 class="index-title">
+                                        Thi đấu, học cờ vua và trò chuyện cùng nhau!
+                                    </h1>
+                                    <!-- <div class="index-info">
+                                        <p class="index-info-item">
+                                            <span class="index-info-item-counter">
+                                                123456
+                                            </span>
+                                            Các ván đấu hôm nay
+                                        </p>
+                                        <p class="index-info-item">
+                                            <span class="index-info-item-counter">
+                                                137.122
+                                            </span>
+                                            Chơi ngay
+                                        </p>
+                                    </div> -->
+                                    <div class="index-guest-button-wrap">
+                                        <form action="/play"
+                                            class="index-guest-button-form" method="post">
+                                            <input type="hidden" name="_token"
+                                                value="2UE5y4nZPTGjLkgDmFBD5i4DDI0aHO5MsCh0ydCC2DU">
+
+                                            <button type="submit"
+                                                class="index-guest-button ui_v5-button-component ui_v5-button-large ui_v5-button-primary  ui_v5-button-full">
+                                                <div class="index-guest-button-icon index-playhand-icon"></div>
+
+                                                <div>
+                                                    <div class="index-guest-button-title">Chơi trực tuyến</div>
+
+                                                    <div class="index-guest-button-subtitle">Đấu với ai đó cùng cấp độ
+                                                        với bạn</div>
+                                                </div>
+                                            </button>
+                                        </form>
+
+                                        <a href="/puzzles"
+                                            class="index-guest-button ui_v5-button-component ui_v5-button-large ui_v5-button-basic ui_v5-button-full">
+                                            <div class="index-guest-button-icon index-computer-icon"></div>
+
+                                            <div>
+                                                <div class="index-guest-button-title">Học cờ vua</div>
+
+                                                <div class="index-guest-button-subtitle">Học cùng các bạn, máy tính
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
 </body>
 
 </html>

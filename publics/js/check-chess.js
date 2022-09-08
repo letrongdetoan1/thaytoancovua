@@ -8,6 +8,32 @@ var squareClass = 'square-55d63'
 var $board = $('#myBoard');
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
+const sideWhiteElement = document.querySelector('.user-username-white');
+const sideBlackElement = document.querySelector('.user-username-dark');
+const timeBlackElement = document.querySelector('.time-black');
+const timeWhiteElement = document.querySelector('.time-white');
+const timerClockWhite = document.querySelector('.clock-white .clock-timer');
+const timerClockBlack = document.querySelector('.clock-black .clock-timer');
+
+var rotatedegWhite = 0;
+var rotatedegBlack = 0;
+
+
+const playGame = [
+    {
+        side: 'w',
+        name: "Toàn",
+        time: 10
+    },
+    {
+        side: 'b',
+        name: "Lan",
+        time: 10
+    },
+]
+
+var timeWhite = playGame[0].time;
+var timeBlack = playGame[1].time;
 
 function removeGreySquares() {
     $('#myBoard .square-55d63').css('background', '')
@@ -66,7 +92,16 @@ function onDrop(source, target) {
         $board.find('.square-' + target).addClass('highlight-black')
     }
 
-    updateStatus()
+    if (move.color === 'b') {
+        renderTime(timeWhiteElement, timeWhite, 'w')
+    }
+
+    if (move.color === 'w') {
+        renderTime(timeBlackElement, timeBlack, 'b')
+    }
+
+
+    updateStatus(playGame)
 }
 
 function onMouseoverSquare(square, piece) {
@@ -103,10 +138,82 @@ function onSnapEnd() {
     board.position(game.fen())
 }
 
-function updateStatus() {
-    var status = ''
 
+
+var timeWhiteStop = 1;
+var timeBlackStop = 1;
+
+function renderTime(element, time, side) {
+
+    if (side === 'w') {
+        clearInterval(timeBlackStop)
+        timeWhiteStop = setInterval(() => {
+            if (timeWhite < 0) {
+                clearInterval(timeWhiteStop)
+                $status.html('Ván cờ kết thúc, ' + 'Trắng' + ' hết thời gian')
+                return
+            }
+
+            let minute;
+            let second;
+            if (timeWhite >= 60) {
+                minute = Math.floor(timeWhite / 60);
+                second = timeWhite % 60;
+                if (second === 0) {
+                    second = '00';
+                }
+            } else {
+                minute = 0;
+                second = timeWhite
+            }
+
+            timerClockWhite.style.fill = '#fff';
+            timerClockBlack.style.fill = '#000';
+            timerClockWhite.style.transform = `rotate(${rotatedegWhite += 90}deg)`;
+            timeWhiteElement.innerText = `${minute}: ${second}`;
+            timeWhite--;
+        }, 1000)
+    }
+    if (side === 'b') {
+        clearInterval(timeWhiteStop)
+        timeBlackStop = setInterval(() => {
+            if (timeBlack < 0) {
+                $status.html('Ván cờ kết thúc, ' + 'Đen' + ' hết thời gian')
+                return
+            }
+            let minute;
+            let second;
+            if (timeBlack >= 60) {
+                minute = Math.floor(timeBlack / 60);
+                second = timeBlack % 60;
+                if (second === 0) {
+                    second = '00';
+                }
+            } else {
+                minute = 0;
+                if (second < 10) {
+                    second = '0' + timeBlack
+                } else {
+                    second = timeBlack
+                }
+
+            }
+
+            timerClockBlack.style.fill = '#fff';
+            timerClockWhite.style.fill = '#000';
+            timerClockBlack.style.transform = `rotate(${rotatedegBlack += 90}deg)`;
+            timeBlackElement.innerText = `${minute}: ${second}`;
+            timeBlack--;
+        }, 1000)
+    }
+}
+
+
+
+function updateStatus(infoPlayGame) {
+    var status = ''
     var moveColor = 'Trắng'
+
     if (game.turn() === 'b') {
         moveColor = 'Đen'
     }
@@ -147,4 +254,12 @@ var config = {
 }
 board = Chessboard('myBoard', config)
 
-updateStatus()
+function updateTimeAndUser(infoBeginStart) {
+    timeWhiteElement.innerText = infoBeginStart[0].time;
+    timeBlackElement.innerText = infoBeginStart[1].time;
+    sideWhiteElement.innerText = infoBeginStart[0].name;
+    sideBlackElement.innerText = infoBeginStart[1].name;
+}
+
+updateTimeAndUser (playGame);
+updateStatus(playGame)
