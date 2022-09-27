@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/letrongdetoan1/thaytoancovua#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "chess.js": "^0.13.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
