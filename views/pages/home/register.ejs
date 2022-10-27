@@ -51,6 +51,10 @@
                                         </div> <span class="icon-font-chess register-form-input-icon"></span>
                                     </div>
                                 </div>
+                                <%if (!checkRegister) {%>
+                                    <div class="form-error-component register-form-input-error">That username is taken. If this is you, <a href="#">log in</a>!</div>
+                                <%}%>
+                                
                                 <!---->
                                 <div class="register-form-line">
                                     <div class="register-form-form-group">

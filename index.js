@@ -17,14 +17,19 @@ app.use('/views',(express.static(path.join(__dirname,'./views'))))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser())
-// app.use(cors());
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: false,
-// }));
-// app.use(passport.authenticate('session'));
+app.use(cors());
+app.use(session({
+    secret: 'thaytoancovua',
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(passport.authenticate('session'));
 
+global.loggedIn = null;
+app.use("*", (req, res, next) => {
+    loggedIn = req.session.userId;
+    next()
+});
 startup(app);
 
 app.listen(process.env.PORT, () => {

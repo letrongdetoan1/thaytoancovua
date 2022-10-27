@@ -1,5 +1,8 @@
 const homeController = (req, res) => {
-  res.render('pages/home/homeToilam')
+  if (req.session.userId) {
+    res.render('pages/home/hometoilam')
+  }
+  res.redirect('/login');
 }
 
 module.exports = {

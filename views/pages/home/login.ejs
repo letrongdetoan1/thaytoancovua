@@ -19,20 +19,32 @@
             <div id="language-banner"></div>
             <main class="v5-section login-component login-component-v5">
                 <div class="login-form-wrapper login-form-wrapper-v5">
+                    <%if (!checkLogin) {%>
+                        <p class="authentication-login-error">This password is incorrect. <a href="#">Forgot / Reset password?</a></p>
+                        <%}%>
                     <form novalidate="" method="post" action="/login"
                         class="authentication-login-form login-form login-form-v5">
                         <div class="ui_v5-input-group-component">
                             <input type="email" id="username" name="_username" required="required" form-error-clear=""
                                 class="ui_v5-input-component ui_v5-input-group-space-left login-input"
-                                placeholder="Tên người dùng hoặc thư điện tử" autofocus=""
-                                aria-label="Tên người dùng hoặc thư điện tử" autocomplete="email">
+                                placeholder="Tên người dùng hoặc thư điện tử" 
+                                <%if (!username) {%>
+                                    autofocus=""
+                                <%}%>
+                                aria-label="Tên người dùng hoặc thư điện tử" autocomplete="email" value="<%if (username) {%>
+                                    <%=username%>
+                                <%}%>">
                             <span class="icon-font-chess ui_v5-input-group-icon ui_v5-input-group-left user"></span>
                         </div>
                         <div class="ui_v5-input-group-component">
                             <input type="password" id="password" name="_password" required="required"
                                 form-error-clear=""
                                 class="ui_v5-input-component ui_v5-input-group-space-left ui_v5-input-group-space-right login-input"
-                                placeholder="Mật khẩu" aria-label="Mật khẩu" autocomplete="current-password">
+                                placeholder="Mật khẩu" aria-label="Mật khẩu" autocomplete="current-password"
+                                <%if (username) {%>
+                                    autofocus=""
+                                <%}%>
+                                >
                             <span class="icon-font-chess ui_v5-input-group-icon ui_v5-input-group-left lock"></span>
                             <button type="button" id="toggle-password-visibility"
                                 class="ui_v5-input-group-button login-toggle-password-visibility">
@@ -52,7 +64,6 @@
                             <a href="https://www.chess.com/vi/forgot"
                                 class="authentication-login-forgot authentication-login-forgot-v5"
                                 title="Quên mật khẩu?">
-                                Quên mật khẩu?
                             </a>
                         </div>
 
@@ -81,7 +92,7 @@
                                 <span>Đăng nhập với Apple</span>
                             </a>
 
-                            <a href="https://www.chess.com/login/google?_locale=vi"
+                            <a href="/auth/google"
                                 class="authentication-social-signin-v5-social-button authentication-social-signin-v5-google"
                                 rel="nofollow">
 
@@ -90,7 +101,7 @@
                                 <span>Đăng nhập bằng Google</span>
                             </a>
 
-                            <a href="https://www.chess.com/login-facebook?_locale=vi"
+                            <a href="/auth/facebook"
                                 class="authentication-social-signin-v5-social-button authentication-social-signin-v5-facebook"
                                 rel="nofollow">
                                 <span class="authentication-social-signin-v5-social-icon facebook-button"></span>

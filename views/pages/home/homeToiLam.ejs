@@ -24,12 +24,14 @@
                     <li class="sprite puzzles-top "><a href="">Bài tập</a></li>
                 </ul>
             </div>
+            <% if(!loggedIn) { %>
             <div class="nav-bottom">
                 <ul>
                     <li><a href="">Đăng ký</a></li>
                     <li><a href="/login">Đăng nhập</a></li>
                 </ul>
             </div>
+            <% } %>
         </div>
         <div class="base-container">
             <div class="layout-component">

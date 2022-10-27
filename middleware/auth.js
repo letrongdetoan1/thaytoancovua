@@ -1,20 +1,55 @@
-const {User} = require("../models/User");
+const { User } = require("../models/User");
 const jwt = require("jsonwebtoken");
+const { JWT_PASSWORD, JWT_EXPIRESIN } = process.env
 
-module.exports.checkRole = async (req, res, next)=>{
-    try{
-        if(req.user.role === 'admin'){
-            next();
-        }else{
-            res.status(403).json({message: 'role is not allowed'})
+const checkLogin = async (req, res, next) => {
+    const userCokie = req.cookies['app-user']
+    if (!userCokie) {
+        return res.redirect('/login');
+    }
+    try {
+        const checkUser = await User.findOne({ _id: userCokie });
+        if (!checkUser) {
+            return res.redirect('/login');
         }
-    }catch(err){
-        console.log(err)
+        req.user = checkUser
+        next()
+    } catch (err) {
+        return res.redirect('/login');
+    }
+}
+
+const checkRole = async (req, res, next) => {
+    try {
+        if (req.user.role === 'admin') {
+            next();
+        } else {
+            return res.status(403).json({ message: 'role is not allowed' })
+        }
+    } catch (err) {
+        // return res.redirect('/login');
+        return res.status(403).json({ message: 'role is not allowed' })
     }
 }
 
 
-async function checkToken(req, res, next) {
+const checkToken = async (req, res, next) => {
+    const userCookie = req.cookies['app-user'];
+    if (!userCookie) return res.redirect('/login');
+
+    try {
+        let data = jwt.verify(userCookie, JWT_PASSWORD);
+        req.user = data.user
+        next();
+    } catch (error) {
+        if (error.message == 'jwt expired') {
+            return res.redirect('/login');
+        } else {
+            return res.redirect('/login');
+        }
+    }
+}
+const checkToken1 = async (req, res, next) => {
     let searchTokenUser
     try {
         let token = req.headers.authorization
@@ -43,4 +78,5 @@ async function checkToken(req, res, next) {
 }
 
 
-module.exports = { checkToken }
+
+module.exports = { checkToken, checkRole, checkLogin }
