@@ -1,11 +1,23 @@
 const socket = io('http://localhost:3000/')
-
+$('#div-chat').hide();
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
-    console.log(arrUserInfo);
+    $('#div-chat').show();
+    $('#div-dangky').hide();
+    arrUserInfo.forEach(user => {
+        const { userName, id } = user;
+        $('#ulUser').append(`<li id="${id}"> ${userName} </li>`)
+    })
+
+    socket.on('CO_NGUOI_DUNG_MOI', user => {
+        const { userName, id } = user;
+        $('#ulUser').append(`<li id="${id}"> ${userName} </li>`)
+    })
 })
 socket.on('CO_NGUOI_DUNG_MOI', user => {
     console.log(user);
 })
+
+socket.on('DANG_KY_THAT_BAI', () => alert('Vui long chon user name khac'));
 
 function openStream() {
     const config = { audio: false, video: true };

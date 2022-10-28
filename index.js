@@ -10,9 +10,13 @@ const io = new Server(server);
 const arrUserInfo = [];
 io.on('connection', (socket) => {
     socket.on('NGUOI_DUNG_DANG_KY', user => {
+        const isExist = arrUserInfo.some(e => e.userName === user.userName)
+        if (isExist) {
+           return socket.emit('DANG_KY_THAT_BAI');
+        }
         arrUserInfo.push(user);
         socket.emit('DANH_SACH_ONLINE', arrUserInfo)
-        io.emit('CO_NGUOI_DUNG_MOI', user)
+        socket.broadcast.emit('CO_NGUOI_DUNG_MOI', user)
     })
     console.log(10, socket.id);
 });
