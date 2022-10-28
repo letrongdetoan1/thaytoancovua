@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const path = require('path');
 const passport = require('passport');
 const multer = require('multer');
@@ -25,43 +24,7 @@ const upload = multer({
     }
 })
 
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
 
-passport.use(new GoogleStrategy({
-    clientID: "868039850591-03lacnopn176nvdjh4p1hkatls39rsl3.apps.googleusercontent.com",
-    clientSecret: "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",
-    callbackURL: "http://localhost:3000/google/login",
-    scope: ['profile', 'email']
-},
-    async function (accessToken, refreshToken, profile, cb) {
-        console.log(profile)
-        return cb(null, profile);
-    }
-));
-
-passport.use(new FacebookStrategy({
-    clientID: '1739249023099944',
-    clientSecret: '1b9c5f1944537fe7e396499970fc989f',
-    callbackURL: "http://localhost:3000/facebook/loged",
-    profileFields: ['id', 'displayName', 'photos', 'email']
-},
-    function (accessToken, refreshToken, profile, cb) {
-        console.log(profile)
-        return cb(null, profile)
-    }
-));
-
-passport.serializeUser(function (user, cb) {
-    process.nextTick(function () {
-        cb(null, { id: user.id, username: user.username, name: user.name });
-    });
-});
-passport.deserializeUser(function (user, cb) {
-    process.nextTick(function () {
-        return cb(null, user);
-    });
-});
 
 const { checkRole, checkLogin, checkToken } = require('../middleware/auth');
 
@@ -75,8 +38,10 @@ const { registerGetController } = require('../controllers/registerController');
 const { registerPostController } = require('../controllers/registerController');
 const { adminController } = require('../controllers/adminController');
 const { uploadPostController, uploadController, uploadCmtPostController } = require('../controllers/uploadController');
+const { troChuyenController } = require('../controllers/troChuyen');
 
 router.get('/login', loginGetController);
+router.get('/trochuyen', troChuyenController);
 router.get('/admin', checkToken, checkRole, adminController);
 router.post('/login', loginPostController);
 router.get('/covuaquandoi', covuaquandoiController);
@@ -97,6 +62,8 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 router.get('/facebook/loged',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
+        global.loggedIn = 123;
+        global.userName = 'google';
         res.redirect('/')
     })
 

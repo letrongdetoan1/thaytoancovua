@@ -50,7 +50,7 @@
                         <div class="nav-panel-component" data-nav-panel="puzzles"
                             data-routes="{&quot;dailyPuzzle&quot;:&quot;https:\/\/www.chess.com\/vi\/daily-chess-puzzle&quot;,&quot;drills&quot;:&quot;https:\/\/www.chess.com\/vi\/drills&quot;,&quot;endgames&quot;:&quot;https:\/\/www.chess.com\/vi\/endgames&quot;,&quot;practice&quot;:&quot;https:\/\/www.chess.com\/vi\/practice&quot;,&quot;puzzleBattle&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/battle&quot;,&quot;puzzlesCustom&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/learning&quot;,&quot;puzzlesRush&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/rush&quot;,&quot;puzzlesRated&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles\/rated&quot;,&quot;tactics&quot;:&quot;https:\/\/www.chess.com\/vi\/puzzles&quot;,&quot;soloChess&quot;:&quot;https:\/\/www.chess.com\/vi\/solo-chess&quot;}">
                         </div>
-
+                        <% if(!loggedIn) { %>    
                         <a id="menu-cta" data-amplitude-props="{&quot;source&quot;:&quot;Unknown&quot;}"
                             href="/register" target="_self"
                             rel="nofollow"
@@ -66,6 +66,14 @@
                             <span class="icon-font-chess icon enter"></span>
                             <span class="label">Đăng nhập</span>
                         </a>
+                        <% } %>
+                        <% if(loggedIn) { %>   
+                        <a class="nav-link-component nav-link-main-design nav-link-top-level sprite puzzles-top"
+                            data-amplitude-nav-selection="puzzles" data-nav-link="puzzles" href="/puzzles"
+                            target="_self">
+                            <span class="nav-link-text">Xin chào <%= userName %> </span>
+                        </a>
+                        <% } %>
                     </div>
                 </div>
             </div>

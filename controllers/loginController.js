@@ -18,6 +18,8 @@ const loginPostController = async (req, res) => {
           const token = jwt.sign({ user }, JWT_PASSWORD, { expiresIn: JWT_EXPIRESIN })
           res.cookie('app-user', token, { expries: new Date(Date.now + 900000) })
           req.session.userId = user._id
+          global.userName = username;
+          console.log(global.userName);
           res.redirect('/home')
         } else {
           res.render('pages/home/login', { checkLogin: false, username: undefined })
