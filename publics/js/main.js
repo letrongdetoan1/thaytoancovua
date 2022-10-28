@@ -12,10 +12,12 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         const { userName, id } = user;
         $('#ulUser').append(`<li id="${id}"> ${userName} </li>`)
     })
+
+    socket.on('AI_DO_NGAT_KET_NOI', peerId => {
+        $(`#${peerId}`).remove();
+    })
 })
-socket.on('CO_NGUOI_DUNG_MOI', user => {
-    console.log(user);
-})
+
 
 socket.on('DANG_KY_THAT_BAI', () => alert('Vui long chon user name khac'));
 
