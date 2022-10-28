@@ -1,5 +1,12 @@
 const socket = io('http://localhost:3000/')
 
+socket.on('DANH_SACH_ONLINE', arrUserInfo => {
+    console.log(arrUserInfo);
+})
+socket.on('CO_NGUOI_DUNG_MOI', user => {
+    console.log(user);
+})
+
 function openStream() {
     const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
@@ -12,11 +19,15 @@ function playStream(idVideoTag, stream) {
 }
 
 openStream()
-.then(stream => playStream('localStream', stream));
+    .then(stream => playStream('localStream', stream));
 
 var peer = new Peer();
 peer.on('open', id => {
-    document.getElementById('my-peer').append(id)
+    document.getElementById('my-peer').append(id);
+    $('#btnSignup').click(function () {
+        const userName = $('#txtUsername').val();
+        socket.emit('NGUOI_DUNG_DANG_KY', { userName, id })
+    });
 });
 
 // Caller
@@ -39,3 +50,4 @@ peer.on('call', call => {
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
 });
+

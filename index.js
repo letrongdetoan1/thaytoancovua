@@ -6,7 +6,14 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+
+const arrUserInfo = [];
 io.on('connection', (socket) => {
+    socket.on('NGUOI_DUNG_DANG_KY', user => {
+        arrUserInfo.push(user);
+        socket.emit('DANH_SACH_ONLINE', arrUserInfo)
+        io.emit('CO_NGUOI_DUNG_MOI', user)
+    })
     console.log(10, socket.id);
 });
 const passport = require('passport')
