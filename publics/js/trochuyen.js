@@ -1,16 +1,18 @@
 const socket = io('http://localhost:3000/')
-$('#div-chat').hide();
+const userNameLogin = document.getElementById('username').innerText;
+
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
-    $('#div-chat').show();
-    $('#div-dangky').hide();
     arrUserInfo.forEach(user => {
         const { userName, id } = user;
-        $('#ulUser').append(`<li id="${id}"> ${userName} </li>`)
+        if (userName === userNameLogin) {
+        } else {
+            $('#ulUser').append(`<li id="${id}">Bạn có muốn trò chuyện với ${userName} </li>`)
+        }
     })
 
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { userName, id } = user;
-        $('#ulUser').append(`<li id="${id}"> ${userName} </li>`)
+        $('#ulUser').append(`<li id="${id}">Bạn có muốn trò chuyện với ${userName} ? </li>`)
     })
 
     socket.on('AI_DO_NGAT_KET_NOI', peerId => {
@@ -18,8 +20,6 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     })
 })
 
-
-socket.on('DANG_KY_THAT_BAI', () => alert('Vui long chon user name khac'));
 
 function openStream() {
     const config = { audio: true, video: true };
@@ -37,11 +37,8 @@ openStream()
 
 var peer = new Peer();
 peer.on('open', id => {
-    document.getElementById('my-peer').append(id);
-    $('#btnSignup').click(function () {
-        const userName = $('#txtUsername').val();
-        socket.emit('NGUOI_DUNG_DANG_KY', { userName, id })
-    });
+    // document.getElementById('my-peer').append(id);
+    socket.emit('NGUOI_DUNG_DANG_KY', { userName: userNameLogin, id })
 });
 
 // Caller

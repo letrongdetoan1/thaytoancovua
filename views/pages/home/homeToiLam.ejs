@@ -32,6 +32,13 @@
                 </ul>
             </div>
             <% } %>
+            <% if(loggedIn) { %>   
+                <a class="nav-link-component nav-link-main-design nav-link-top-level sprite puzzles-top"
+                    data-amplitude-nav-selection="puzzles" data-nav-link="puzzles" href="/puzzles"
+                    target="_self">
+                    <span class="nav-link-text" id="username"><%= userName %></span>
+                </a>
+                <% } %>
         </div>
         <div class="base-container">
             <div class="layout-component">
@@ -113,13 +120,25 @@
                             </div>
                         </div>
                         <div class="index-intro">
-                            <h1>Chào mừng bạn đến trang web học cờ vua!</h1>
+                            <p>Online user</p>
+                            <ul id="ulUser">
+                            </ul>
+                            <h3 id="my-peer">Your id: </h3>
+                            <video id="localStream" width="300" controls></video>
+                            <br /><br />
+                            <video id="remoteStream" width="300" controls></video>
+                            <br /><br />
+                            <!-- <input type="text" id="remoteId" placeholder="Remote ID"> -->
+
+                            <!-- <button id="btnCall">Call</button> -->
+
+                            <!-- <h1>Chào mừng bạn đến trang web học cờ vua!</h1>
                             <label class="label-chess">Đến lượt:</label>
-                            <div class="label-chess" id="status"></div>
+                            <div class="label-chess" id="status"></div> -->
                             <!-- <label>FEN:</label>
                             <div id="fen"></div> -->
-                            <label class="label-chess">Biên bản thi đấu</label>
-                            <div class="label-chess" id="pgn"></div>
+                            <!-- <label class="label-chess">Biên bản thi đấu</label>
+                            <div class="label-chess" id="pgn"></div> -->
                         </div>
                     </section>
                 </div>
@@ -136,13 +155,16 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
-    <script src="/js/jquery351min.js"></script>
     <script src="/js/chessboard.js"></script>
     <!-- <script src="/js/chess12.1.js"></script> -->
     <script src="/js/chess13.4.js"></script>
     <!-- <script src="/js/check-chess.js"></script> -->
     <script src="/js/home.js"></script>
+    <script defer src="/js/trochuyen.js"></script>
 </body>
 
 </html>
