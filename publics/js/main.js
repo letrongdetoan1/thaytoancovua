@@ -1,4 +1,4 @@
-const socket = io('mythuatnamthang.com')
+const socket = io('https://mythuatnamthang.com')
 $('#div-chat').hide();
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     $('#div-chat').show();
