@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000/')
+const socket = io('/')
 const userNameLogin = document.getElementById('username').innerText;
 
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
