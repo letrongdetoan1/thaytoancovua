@@ -59,7 +59,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new GoogleStrategy({
     clientID: "868039850591-03lacnopn176nvdjh4p1hkatls39rsl3.apps.googleusercontent.com",
     clientSecret: "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",
-    callbackURL: "https://mythuatnamthang.com//google/login",
+    callbackURL: "https://mythuatnamthang.com/google/login",
     scope: ['profile', 'email']
 },
     async function (accessToken, refreshToken, profile, cb) {
@@ -70,7 +70,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: '1739249023099944',
     clientSecret: '1b9c5f1944537fe7e396499970fc989f',
-    callbackURL: "https://mythuatnamthang.com//facebook/loged",
+    callbackURL: "https://mythuatnamthang.com/facebook/loged",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
     function (accessToken, refreshToken, profile, cb) {
