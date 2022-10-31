@@ -59,12 +59,10 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new GoogleStrategy({
     clientID: "868039850591-03lacnopn176nvdjh4p1hkatls39rsl3.apps.googleusercontent.com",
     clientSecret: "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",
-    callbackURL: "http://localhost:3000/google/login",
+    callbackURL: "mythuatnamthang/google/login",
     scope: ['profile', 'email']
 },
     async function (accessToken, refreshToken, profile, cb) {
-
-        console.log(profile.displayName)
         return cb(null, profile);
     }
 ));
@@ -72,7 +70,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: '1739249023099944',
     clientSecret: '1b9c5f1944537fe7e396499970fc989f',
-    callbackURL: "http://localhost:3000/facebook/loged",
+    callbackURL: "mythuatnamthang/facebook/loged",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
     function (accessToken, refreshToken, profile, cb) {

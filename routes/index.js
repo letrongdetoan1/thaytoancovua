@@ -62,8 +62,6 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 router.get('/facebook/loged',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
-        global.loggedIn = 123;
-        global.userName = 'google';
         res.redirect('/')
     })
 

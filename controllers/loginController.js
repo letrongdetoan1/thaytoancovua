@@ -20,7 +20,7 @@ const loginPostController = async (req, res) => {
           req.session.userId = user._id
           global.userName = username;
           console.log(global.userName);
-          res.redirect('/home')
+          return res.redirect('/home')
         } else {
           res.render('pages/home/login', { checkLogin: false, username: undefined })
         }

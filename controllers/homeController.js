@@ -1,6 +1,6 @@
 const homeController = (req, res) => {
   if (req.session.userId) {
-    res.render('pages/home/hometoilam')
+    return res.render('pages/home/hometoilam')
   }
   res.redirect('/login');
 }
